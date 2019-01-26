@@ -60,7 +60,7 @@ const showLocalNotification = (title, body, swRegistration) => {
 
 self.addEventListener('activate', async () => {
   // This will be called only once when the service worker is activated.
-  console.log('In service');
+  console.log('In  service');
   try {
     const applicationServerKey = urlB64ToUint8Array(
       'BBqQc40l8r6HT9olNa4QLXo8ZeHVFbi-AbDw7Tr_xsaX8xiir7qquYEW6l5WkMRdnuW_ZUCTQQzf1DjI3V87P54'
