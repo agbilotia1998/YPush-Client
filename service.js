@@ -14,7 +14,7 @@ const urlB64ToUint8Array = base64String => {
 }
 
 const saveSubscription = async subscription => {
-  const SERVER_URL = 'https://7db9c68d.ngrok.io/save-endpoint';
+  const SERVER_URL = 'https://ypush.herokuapp.com/save-endpoint';
   let open = indexedDB.open('mydb', 1);
   console.log('INNN')
   open.onsuccess = async function(event) {
