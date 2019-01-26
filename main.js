@@ -88,6 +88,7 @@ const main = async () => {
   const swRegistration = await registerServiceWorker();
   console.log(swRegistration);
   const permission = await requestNotificationPermission();
+  console.log(permission);
 }
 
 getIP().then((resp) => {
