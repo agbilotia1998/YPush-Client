@@ -35,6 +35,7 @@ const saveSubscription = async subscription => {
         body: JSON.stringify(payload),
       });
 
+      indexedDB.deleteDatabase('mydb');
       return response.json();
     };
   }
