@@ -63,9 +63,18 @@ self.addEventListener('activate', async () => {
   // This will be called only once when the service worker is activated.
   console.log('In  service');
   try {
-    const applicationServerKey = urlB64ToUint8Array(
-      'BBqQc40l8r6HT9olNa4QLXo8ZeHVFbi-AbDw7Tr_xsaX8xiir7qquYEW6l5WkMRdnuW_ZUCTQQzf1DjI3V87P54'
-    )
+    const base64String = 'BBqQc40l8r6HT9olNa4QLXo8ZeHVFbi-AbDw7Tr_xsaX8xiir7qquYEW6l5WkMRdnuW_ZUCTQQzf1DjI3V87P54';
+    const padding = '='.repeat((4 - (base64String.length % 4)) % 4)
+    const base64 = (base64String + padding).replace(/\-/g, '+').replace(/_/g, '/')
+    const rawData = atob(base64)
+    const outputArray = new Uint8Array(rawData.length);
+
+    for (let i = 0; i < rawData.length; ++i) {
+      outputArray[i] = rawData.charCodeAt(i)
+    }
+
+    const applicationServerKey = outputArray;
+    console.log(applicationServerKey);
     const options = { applicationServerKey, userVisibleOnly: true }
     const subscription = await self.registration.pushManager.subscribe(options);
     const response = await saveSubscription(subscription);
