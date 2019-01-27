@@ -64,7 +64,6 @@ async function getIP() {
   return func;
 }
 
-// var db;
 
 const registerServiceWorker = async () => {
   const swRegistration = await navigator.serviceWorker.register('service.js');
